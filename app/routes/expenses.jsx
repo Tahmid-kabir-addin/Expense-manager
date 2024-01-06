@@ -1,6 +1,8 @@
-import Chart from "../components/expenses/Chart";
-import ExpenseStatistics from "../components/expenses/ExpenseStatistics";
+import { Outlet, useMatches } from "@remix-run/react";
+
+import ExpensesList from "../components/expenses/ExpensesList";
 import styles from '../styles/expenses.css';
+
 const dummy_expenses = [
     {
         id: 'e1',
@@ -22,15 +24,21 @@ const dummy_expenses = [
     }
 ]
 
-export default function ExpenseAnalysis() {
+
+export default function Expenses() {
+    const routeData = useMatches();
+    const showExpanseList = routeData.slice(-1)[0].pathname.includes('expenses/analysis')
+
     return (
         <>
-            <Chart expenses={dummy_expenses} />
-            <ExpenseStatistics expenses={dummy_expenses} />
+            <main>
+                <Outlet />
+            </main>
+            {!showExpanseList && <ExpensesList expenses={dummy_expenses} />}
         </>
     );
 }
 
 export function links() {
-    return [{ rel: 'styelsheet', href: styles }];
+    return [{rel: 'stylesheet', href: styles}];
 }

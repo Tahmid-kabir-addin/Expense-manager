@@ -1,7 +1,16 @@
+import AuthForm from '../components/auth/AuthForm';
+import authStyles from '../styles/auth.css';
+
 const AuthenticationPage = () => {
   return (
-    <h1>Auth</h1>
+    <>
+      <AuthForm />
+    </>
   )
 }
 
 export default AuthenticationPage
+
+export function links() {
+  return [{rel: 'stylesheet', href: authStyles}];
+}
