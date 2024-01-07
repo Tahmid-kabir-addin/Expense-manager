@@ -1,6 +1,6 @@
 import Chart from "../components/expenses/Chart";
 import ExpenseStatistics from "../components/expenses/ExpenseStatistics";
-import styles from '../styles/expenses.css';
+// import styles from '../styles/expenses.css';
 const dummy_expenses = [
     {
         id: 'e1',
@@ -31,6 +31,6 @@ export default function ExpenseAnalysis() {
     );
 }
 
-export function links() {
-    return [{ rel: 'styelsheet', href: styles }];
-}
+// export function links() {
+//     return [{ rel: 'styelsheet', href: styles }];
+// }
