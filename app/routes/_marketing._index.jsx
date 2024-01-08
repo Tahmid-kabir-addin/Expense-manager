@@ -1,6 +1,5 @@
 import { Link } from '@remix-run/react';
 import { FaArrowRight, FaChartBar, FaDollarSign } from 'react-icons/fa/index.js';
-import styles from '../styles/marketing.css';
 
 export default function Index() {
   return (
@@ -45,7 +44,3 @@ export default function Index() {
 }
 
 export function meta() {}
-
-export function links() {
-  return [{rel: 'stylesheet', href: styles}]
-}

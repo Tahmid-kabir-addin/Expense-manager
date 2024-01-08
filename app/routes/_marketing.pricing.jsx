@@ -1,7 +1,6 @@
 import { FaTrophy, FaHandshake } from 'react-icons/fa/index.js';
 
 import PricingPlan from '~/components/marketing/PricingPlan';
-import styles from '../styles/marketing.css';
 
 const PRICING_PLANS = [
   {
@@ -41,7 +40,3 @@ export default function PricingPage() {
 }
 
 export function meta() {}
-
-export function links() {
-    return [{rel: 'stylesheet', href: styles}]
-}
