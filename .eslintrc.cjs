@@ -33,6 +33,7 @@ module.exports = {
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
+        "plugin:prisma/recommended",
       ],
       rules: {
         "react/prop-types": "off",

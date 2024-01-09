@@ -11,9 +11,9 @@ datasource db {
 }
 
 model Expense {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  amount Float
-  date DateTime // when expense occurred
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  amount    Float
+  date      DateTime // when expense occurred
   dateAdded DateTime @default(now())
 }

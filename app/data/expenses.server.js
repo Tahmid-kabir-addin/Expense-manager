@@ -1,4 +1,4 @@
-import {prisma} from "./database.server";
+import { prisma } from "./database.server";
 
 export async function addExpense(expenseData) {
   try {
@@ -9,6 +9,24 @@ export async function addExpense(expenseData) {
         date: new Date(expenseData.date),
       },
     });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function getExpenses() {
+  try {
+    return await prisma.expense.findMany({ orderBy: { date: "desc" } });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function getSingleExpense(id) {
+  try {
+    return await prisma.expense.findFirst({ where: { id } });
   } catch (error) {
     console.log(error);
     throw error;
