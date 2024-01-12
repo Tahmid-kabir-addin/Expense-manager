@@ -1,7 +1,8 @@
-import { useNavigate } from "@remix-run/react";
+import { json, useNavigate } from "@remix-run/react";
 import ExpenseForm from "../components/expenses/ExpenseForm";
 import Modal from "../components/util/Modal";
-import { getSingleExpense } from "../data/expenses.server";
+import { deleteExpense, updateExpenseData } from "../data/expenses.server";
+import { validateExpenseInput } from "../data/validation.server";
 // import Modal from "../components/util/Modal";
 
 export default function SingleExpense() {
@@ -18,7 +19,25 @@ export default function SingleExpense() {
   );
 }
 
-// export async function loader({ params }) {
-//   console.log("laoding from id");
-//   return await getSingleExpense(params.id);
-// }
+export async function action({ request, params }) {
+  if (request.method === "PATCH") {
+    const formData = await request.formData();
+    const expenseData = Object.fromEntries(formData);
+
+    try {
+      validateExpenseInput(expenseData);
+    } catch (error) {
+      return error;
+    }
+
+    await updateExpenseData(params.id, expenseData);
+  } else if (request.method === "DELETE") {
+    try {
+      await deleteExpense(params.id);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+  return json({ message: params.id });
+}

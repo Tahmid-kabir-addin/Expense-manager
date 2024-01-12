@@ -13,7 +13,6 @@ function ExpenseForm() {
   const routes = useMatches();
   const { id } = useParams();
   let expense = null;
-  console.log(routes);
 
   // catch parent data using useMatches()
   if (routes.length > 2)
@@ -43,7 +42,11 @@ function ExpenseForm() {
   console.log(title, amount, date);
 
   return (
-    <Form method="post" className="form" id="expense-form">
+    <Form
+      method={expense ? "patch" : "post"}
+      className="form"
+      id="expense-form"
+    >
       <p>
         <label htmlFor="title">Expense Title</label>
         <input

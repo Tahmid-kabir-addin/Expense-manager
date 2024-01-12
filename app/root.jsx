@@ -5,6 +5,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  isRouteErrorResponse,
+  useRouteError,
 } from "@remix-run/react";
 
 import styles from './styles/shared.css';
@@ -34,4 +36,14 @@ export default function App() {
 
 export function links() {
   return [{rel: 'stylesheet', href: styles}];
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if(isRouteErrorResponse(error)) {
+  
+  } else {
+    
+  }
 }
